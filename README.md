@@ -31,15 +31,13 @@
 ### Инструкция по запуску проекта
 
 * Скопируйте проект на локальную машину
-* В корне проекта запустите командную строку и выполните команду ``mvn clean install`` после чего появится
+* В корне проекта запустите командную строку и выполните команду ``mvn clean package`` после чего появится
   папка **target**
 
-![1.png](src%2Fmain%2Fresources%2Fimage%2F1.png)
+![img_1.png](src%2Fmain%2Fresources%2Fimage%2Fimg_1.png)
 
-![2.png](src%2Fmain%2Fresources%2Fimage%2F2.png)
+* Перейдите в папку **target** и выполните команду  ``java -jar flyhandler-1.0-SNAPSHOT.jar``
 
-* Перейдите в папку **target** и выполните команду  ``java -jar testfornota-0.0.1-SNAPSHOT.jar``
-
-![3.png](src%2Fmain%2Fresources%2Fimage%2F3.png)
+![img_2.png](src%2Fmain%2Fresources%2Fimage%2Fimg_2.png)
 
 

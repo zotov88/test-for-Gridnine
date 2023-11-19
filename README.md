@@ -38,11 +38,10 @@
 * Скопируйте проект на локальную машину
 * В корне проекта запустите терминал и выполните команду ``mvn clean package`` после чего появится
   папка **target**
-
-![img_1.png](src%2Fmain%2Fresources%2Fimage%2Fimg_1.png)
-
 * Перейдите в папку **target** и выполните команду  ``java -jar flyhandler-1.0-SNAPSHOT.jar``
 
-![img_2.png](src%2Fmain%2Fresources%2Fimage%2Fimg_2.png)
+![run.gif](src%2Fmain%2Fresources%2Fgif%2Frun.gif)
+
+
 
 

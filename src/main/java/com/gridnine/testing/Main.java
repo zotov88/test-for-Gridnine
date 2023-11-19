@@ -27,14 +27,13 @@ public class Main {
 
         FilterDescription description = FilterDescription.getInstance();
 
-        for (FlightFilter filter : filterFlightList) {
-            description.getDescription(filter.getClass());
-            filter.filter();
-            for (Segment segment : filter.getFilteredResult()) {
+        for (FlightFilter flightFilter : filterFlightList) {
+            description.getDescription(flightFilter.getClass());
+            flightFilter.filter();
+            for (Segment segment : flightFilter.getFilteredResult()) {
                 System.out.println(segment);
             }
             System.out.println();
         }
-
     }
 }

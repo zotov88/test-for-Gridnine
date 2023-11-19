@@ -3,41 +3,35 @@ package com.gridnine.testing.service;
 import com.gridnine.testing.model.Flight;
 import com.gridnine.testing.model.Segment;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static com.gridnine.testing.constant.FilterFlightConstant.Data.HOURS_AFTER_ARRIVAL;
-import static com.gridnine.testing.constant.FilterFlightConstant.Other.DELIMITER;
+import static com.gridnine.testing.constant.FilterFlightConstant.Data.DEFAULT_HOURS_AFTER_ARRIVAL;
 
+/**
+ * This class has a constructor that accepts the number of hours and performs calculations relative to this parameter.
+ * Default time value is 2 hours
+ */
 public final class FilterFlightOnTheGroundBiggerThanXHours extends AbstractFlightFilter {
 
-    private final List<List<Segment>> moreTwoHoursList = new ArrayList<>();
+    private final int hours;
 
     public FilterFlightOnTheGroundBiggerThanXHours(List<Flight> flights) {
         super(flights);
+        this.hours = DEFAULT_HOURS_AFTER_ARRIVAL;
     }
 
-    @Override
-    public void filtration() {
-        for (Flight flight : flights) {
-            checkSegments(flight);
-        }
-        showSegments();
+    public FilterFlightOnTheGroundBiggerThanXHours(List<Flight> flights, int hours) {
+        super(flights);
+        this.hours = hours > 0 ? hours : DEFAULT_HOURS_AFTER_ARRIVAL;
     }
 
-    private void checkSegments(Flight flight) {
+    public void filterSegments(final Flight flight) {
         List<Segment> segments = flight.getSegments();
         for (int i = 0; segments.size() > 1 && i < segments.size() - 1; i++) {
-            if (segments.get(i).getArrivalDate().plusHours(HOURS_AFTER_ARRIVAL).isBefore(segments.get(i + 1).getDepartureDate())) {
-                moreTwoHoursList.add(List.of(segments.get(i), segments.get(i + 1)));
+            if (segments.get(i).getArrivalDate().plusHours(hours).isBefore(segments.get(i + 1).getDepartureDate())) {
+                filteredSegments.add(segments.get(i));
+                filteredSegments.add(segments.get(i + 1));
             }
         }
-    }
-
-    private void showSegments() {
-        for (List<Segment> segments : moreTwoHoursList) {
-            System.out.println(segments);
-        }
-        System.out.println(DELIMITER);
     }
 }

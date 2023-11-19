@@ -1,9 +1,9 @@
 package com.gridnine.testing.util;
 
-import com.gridnine.testing.service.Filter;
 import com.gridnine.testing.service.FilterFlightArrivalBeforeDeparture;
 import com.gridnine.testing.service.FilterFlightDepartureBeforeCurrentTime;
 import com.gridnine.testing.service.FilterFlightOnTheGroundBiggerThanXHours;
+import com.gridnine.testing.service.FlightFilter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +13,7 @@ import static com.gridnine.testing.constant.FilterFlightConstant.Description.*;
 public final class FilterDescription {
 
     private static FilterDescription filterDescription;
-    private static Map<Class<? extends Filter>, String> descriptionMap;
+    private static Map<Class<? extends FlightFilter>, String> descriptionMap;
 
     private FilterDescription() {
     }
@@ -25,7 +25,7 @@ public final class FilterDescription {
         return filterDescription;
     }
 
-    public void getDescription(Class<? extends Filter> clazz) {
+    public void getDescription(Class<? extends FlightFilter> clazz) {
         if (descriptionMap == null) {
             init();
         }
